@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"  >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style2.css') }}">
+    <title>DASHBORAD</title>
+</head>
+<body>
+    <canvas id="canvas" ></canvas>
+
+        <div class="col-md-6 offset-md-3 bg-transparent text-light mb-15">
+            <h1 class="content">WELCOME, {{ found_user.first_name }} </h1>
+                <ul>
+                    <li><a href="/logout" class="btn btn-outline-secondary-light">Logout</a></li>
+                </ul>
+        </div>
+        <script type="text/javascript" src="{{ url_for('static', filename='/js/script2.js') }}"></script>
+
+        
+    
+
+</body>
+
+</html>

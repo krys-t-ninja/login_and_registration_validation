@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>AnimaForm</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/styleee.css') }}">
+
+  </head>
+  
+<body>
+  <div id="mainCoantiner">
+    <div class="main-header">
+      <div class="header-social">
+      <ul>
+
+        <li> <a href="https://github.com/krys-t-ninja">krys-t-ninja</a></li>
+        <li><h4> click the link and follow </h4></li>
+      </ul>
+    </div>
+    <div class="folio-btn">
+      <a class="folio-btn-item ajax" href="https://codepen.io/uiswarup/full/WNLdjqN" target="_blank"><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span><span class="folio-btn-dot"></span></a>
+    </div>
+  </div>
+  
+  <!--dust particel-->
+  <div>
+    <div class="starsec"></div>
+    <div class="starthird"></div>
+    <div class="starfourth"></div>
+    <div class="starfifth"></div>
+  </div>
+  <!--Dust particle end--->
+  <section class="forms-section">
+    <h1 class="section-title text-colorboard">WELCOME TO THIS AWESOME WEBSITE</h1>
+    <div class="forms">
+      <div class="form-wrapper is-active">
+        <button type="button" class="switcher switcher-login">
+          Login
+          <span class="underline"></span>
+        </button>
+       
+        <form class="form form-login" action="/login" method="post">
+          
+          <fieldset>
+            <legend>Please, enter your email and password for login.</legend>
+            {% with messages = get_flashed_messages(category_filter=["login"]) %}
+            {% if messages %}
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+            {% endif %}
+        {% endwith %}
+            <div class="input-block">
+              <label for="email">E-mail</label>
+              <input id="email" type="email" name="email" required>
+            </div>
+            <div class="input-block">
+              <label for="password">Password</label>
+              <input id="password" type="password" name="password"required>
+            </div>
+          </fieldset>
+          <input type="submit" class="btn-login" value="Login">
+        </form>
+      </div>
+      <div class="form-wrapper">
+        <button type="button" class="switcher switcher-signup">
+          Sign Up
+          <span class="underline"></span>
+        </button>
+      
+        <form class="form form-signup" action="/register" method="post">
+      <feildset>
+            <legend>Please, enter your name, email, password and password confirmation for sign up.</legend>
+            <form action="/register" method="post" class="bg-info p-3 text-dark bg-opacity-25">
+              <h2 class="text-center text-primary"> REGISTER</h2>
+              {% with messages = get_flashed_messages(category_filter=["register"]) %}
+                  {% if messages %}
+                      {% for message in messages %}
+                      <p>{{message}}</p>
+                      {% endfor %}
+                  {% endif %}
+              {% endwith %}
+            <div class="input-block">
+              {% with errors = get_flashed_messages(category_filter=['first_name']) %}
+              {% if errors %}
+              <ul class="flashes list-group">
+                  {% for error in errors %}
+                  <li class="list-group-item list-group-item-danger">{{ error }} </li>
+                  {% endfor %}
+               </ul>
+              {% endif %}
+              {% endwith %}
+              <label for="first_name">First Name</label>
+              <input id="signup-first_name" name="first_name" type="text" required>
+            </div>
+            <div class="input-block">
+              {% with errors = get_flashed_messages(category_filter=['last_name']) %}
+              {% if errors %}
+              <ul class="flashes list-group">
+                  {% for error in errors %}
+                  <li class="list-group-item list-group-item-danger">{{ error }} </li>
+                  {% endfor %}
+               </ul>
+              {% endif %}
+              {% endwith %}             
+      
+              <label for="last_name">Last Name</label>
+              <input id="signup-last_name" type="text" name="last_name"required>
+            </div>
+            <div class="input-block">
+              {% with errors = get_flashed_messages(category_filter=['email','register']) %}
+              {% if errors %}
+              <ul class="flashes list-group">
+                  {% for error in errors %}
+                  <li class="list-group-item list-group-item-danger">{{ error }} </li>
+                  {% endfor %}
+               </ul>
+              {% endif %}
+              {% endwith %}              
+              <label for="email">E-mail</label>
+              
+              <input id="signup-email" type="email" name="email" required>
+            </div>
+          
+            <div class="input-block">
+              {% with errors = get_flashed_messages(category_filter=['password']) %}
+              {% if errors %}
+              <ul class="flashes list-group">
+                  {% for error in errors %}
+                  <li class="list-group-item list-group-item-danger">{{ error }} </li>
+                  {% endfor %}
+               </ul>
+              {% endif %}
+              {% endwith %}
+              <label for="password">Password</label>
+              <input id="signup-password" type="password" name="password" required>
+            </div>
+            <div class="input-block">
+              {% with errors = get_flashed_messages(category_filter=['confirm']) %}
+              {% if errors %}
+              <ul class="flashes list-group">
+                  {% for error in errors %}
+                  <li class="list-group-item list-group-item-danger">{{ error }} </li>
+                  {% endfor %}
+               </ul>
+              {% endif %}
+              {% endwith %}
+              <label for="confirm">Confirm password</label>
+              <input id="signup-password-confirm" type="password" name="confirm" required>
+            </div>
+          </fieldset>
+          <input type="submit" class="btn-signup" value="REGISTER">
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+   
+    
+
+           
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/script.js') }}"></script>
+
+</html>
